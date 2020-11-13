@@ -1,0 +1,1 @@
+# C_quadratic_equation_resolver
