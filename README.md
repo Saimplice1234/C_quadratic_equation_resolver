@@ -1,4 +1,8 @@
 # C_quadratic_equation_resolver
 
-# The name
-                                                         /_/  
+# ScreenShot
+
+# How to use
+
+
+                                                      
