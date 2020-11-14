@@ -2,7 +2,6 @@
 #include <math.h>  
 #include <regex.h>
 #include <stdlib.h>
-#include "dic.h"
 
 #define TAILLE_MAX 1000
 
@@ -10,16 +9,13 @@ void showBannerEquation(){
 
     FILE* fichier = NULL;
     char chaine[TAILLE_MAX] = "";
- 
     fichier = fopen("banner.txt", "r");
- 
     if (fichier != NULL)
     {
-        while (fgets(chaine, TAILLE_MAX, fichier) != NULL)
-        {
-            printf("%s", chaine);
-        }
- 
+      while (fgets(chaine, TAILLE_MAX, fichier) != NULL)
+      {
+        printf("%s", chaine);
+      }
         fclose(fichier);
     }
 }
@@ -27,10 +23,9 @@ void showBannerEquation(){
 int getDeltaValue(int a,int b,int c){
 
    int exponent=pow(b,2);
-   printf("%d",exponent);
    int tempAC=a*c;
    int tempAB=4*tempAC;
-   return exponent-tempAB;
+   return exponent-(tempAB);
 
 }
 void pf(char * str){
@@ -50,11 +45,44 @@ void paternTest(int value)
     }
 }
 
-int calculateX1AndX2(int a,int b,int c){
-  int group[2];
-  return group[0];
+void showBannerBye(){
+      FILE* fichier = NULL;
+    char chaine[TAILLE_MAX] = "";
+    fichier = fopen("banner2.txt", "r");
+    if (fichier != NULL)
+    {
+      while (fgets(chaine, TAILLE_MAX, fichier) != NULL)
+      {
+        printf("%s", chaine);
+      }
+        fclose(fichier);
+    }
 }
+int getSolutionCase(int delta,int a,int b,int c){
+  if(delta > 0){
 
+    int x1,x2;
+    int tempA=-b-delta;
+    int tempB=2*a;
+    x1=tempA/tempB;
+
+    int tempASecond=-b+delta;
+    int tempBSecond=2*a;
+    x2=tempASecond/tempBSecond;
+    
+    printf("L'ensemble des solutions donne S={%d:%d}",x1,x2);
+    showBannerBye();
+  }else if(delta<0){
+    pf("L'equation a pour solution ensemble de vide !");
+  }
+  else if(delta == 0){
+   int x1,x2;
+   x1=-b/2*a;
+   x2=x1;
+   printf("L'ensemble des solutions donne S={%d:%d}",x1,x2);
+  }
+ return 0;
+}
 int main(){
 
   char ptr_a[256],ptr_b[256],ptr_c[256];
@@ -96,16 +124,11 @@ int main(){
     ptr_b_match=atoi(ptr_b);
     ptr_c_match=atoi(ptr_c);
 
-    int delta=getDeltaValue(
+    int delta=sqrt(getDeltaValue(
       ptr_a_match,
       ptr_b_match,
-      ptr_c_match);
-
-   printf("Delta est %d",delta);
-    
+      ptr_c_match));
+      getSolutionCase(delta,ptr_a_match,ptr_b_match,ptr_c_match);
   }
-
-
-
   return 0;
 }
