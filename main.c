@@ -2,12 +2,7 @@
 #include <math.h>  
 #include <regex.h>
 #include <stdlib.h>
-/*
-NOM Saimplice
-PRENOM Ruud Christopher
-CLASSE NS3-B
-DATE 17 novembre 2020
-*/
+
 #define TAILLE_MAX 1000
 
 void pf(char * str){
